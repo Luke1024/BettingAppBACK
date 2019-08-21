@@ -14,5 +14,16 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.7.RELEASE'
+    compile('mysql:mysql-connector-java')
+
+    compile("org.springframework.boot:spring-boot-starter-mail")
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+
+    compile('com.google.code.gson:gson:2.8.2')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.28.2'
+    testCompile group: 'com.shazam', name: 'shazamcrest', version: '0.11'
 }
