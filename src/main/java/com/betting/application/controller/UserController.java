@@ -24,7 +24,8 @@ public class UserController {
 
     @PostMapping(value = "/users", consumes = APPLICATION_JSON_VALUE)
     public void registerUser(@RequestBody UserDto userDto){
-        LOGGER.info("Saving user: " + userDto.getFirstName() + " " + userDto.getLastName());
+        LOGGER.info("Saving user: " + userDto.getFirstname() + " " + userDto.getLastname());
+        System.out.println(userDto.getFirstname() + " " + userDto.getLastname() + " " + userDto.getPassword() + " " + userDto.getEmail());
         userService.saveUser(userMapper.mapToUser(userDto));
     }
 }

@@ -1,26 +1,26 @@
 package com.betting.application.domain.dto;
 
 public class UserDto {
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private String password;
     private String email;
 
     public UserDto() {}
 
-    public UserDto(String firstName, String lastName, String password, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public UserDto(String firstname, String lastname, String password, String email) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.password = password;
         this.email = email;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
     public String getPassword() {
