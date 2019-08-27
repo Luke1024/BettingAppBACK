@@ -1,5 +1,6 @@
 package com.betting.application.controller;
 
+import com.betting.application.domain.dto.LoginDto;
 import com.betting.application.domain.dto.UserDto;
 import com.betting.application.mapper.UserMapper;
 import com.betting.application.service.UserService;
@@ -27,5 +28,10 @@ public class UserController {
         LOGGER.info("Saving user: " + userDto.getFirstname() + " " + userDto.getLastname());
         System.out.println(userDto.getFirstname() + " " + userDto.getLastname() + " " + userDto.getPassword() + " " + userDto.getEmail());
         userService.saveUser(userMapper.mapToUser(userDto));
+    }
+
+    @PutMapping(value = "/users", consumes = APPLICATION_JSON_VALUE)
+    public void loginUser(@RequestBody LoginDto loginDto){
+        LOGGER.info("Logging user with email: " + loginDto.getEmail());
     }
 }
