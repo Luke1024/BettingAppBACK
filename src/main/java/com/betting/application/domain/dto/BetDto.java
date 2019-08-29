@@ -1,72 +1,48 @@
 package com.betting.application.domain.dto;
 
+import com.betting.application.domain.utilities.Result;
+
 import java.time.LocalDateTime;
 
 public class BetDto {
-    private Long id;
-    private Long match_id;
-    private Long country_id;
-    private Long leaque_id;
-    private String country_name;
-    private String league_name;
-    private LocalDateTime match_date_time;
-    private String match_hometeam_name;
-    private String match_awayteam_name;
+    private Long userId;
+    private Long matchId;
+    private Long amount;
+    private Result result;
     private double odd_1;
     private double odd_x;
     private double odd_2;
-    private String match_status;
+    private double amoutChangeAfterClosing;
+    private LocalDateTime open;
+    private LocalDateTime lastEdit;
 
-    public BetDto(Long id, Long match_id, Long country_id, Long leaque_id, String country_name, String league_name, LocalDateTime match_date_time, String match_hometeam_name, String match_awayteam_name, double odd_1, double odd_x, double odd_2, String match_status) {
-        this.id = id;
-        this.match_id = match_id;
-        this.country_id = country_id;
-        this.leaque_id = leaque_id;
-        this.country_name = country_name;
-        this.league_name = league_name;
-        this.match_date_time = match_date_time;
-        this.match_hometeam_name = match_hometeam_name;
-        this.match_awayteam_name = match_awayteam_name;
+    public BetDto(Long userId, Long matchId, Long amount, Result result, double odd_1, double odd_x, double odd_2, double amoutChangeAfterClosing, LocalDateTime open, LocalDateTime lastEdit) {
+        this.userId = userId;
+        this.matchId = matchId;
+        this.amount = amount;
+        this.result = result;
         this.odd_1 = odd_1;
         this.odd_x = odd_x;
         this.odd_2 = odd_2;
-        this.match_status = match_status;
+        this.amoutChangeAfterClosing = amoutChangeAfterClosing;
+        this.open = open;
+        this.lastEdit = lastEdit;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public Long getMatch_id() {
-        return match_id;
+    public Long getMatchId() {
+        return matchId;
     }
 
-    public Long getCountry_id() {
-        return country_id;
+    public Long getAmount() {
+        return amount;
     }
 
-    public Long getLeaque_id() {
-        return leaque_id;
-    }
-
-    public String getCountry_name() {
-        return country_name;
-    }
-
-    public String getLeague_name() {
-        return league_name;
-    }
-
-    public LocalDateTime getMatch_date_time() {
-        return match_date_time;
-    }
-
-    public String getMatch_hometeam_name() {
-        return match_hometeam_name;
-    }
-
-    public String getMatch_awayteam_name() {
-        return match_awayteam_name;
+    public Result getResult() {
+        return result;
     }
 
     public double getOdd_1() {
@@ -81,7 +57,15 @@ public class BetDto {
         return odd_2;
     }
 
-    public String getMatch_status() {
-        return match_status;
+    public double getAmoutChangeAfterClosing() {
+        return amoutChangeAfterClosing;
+    }
+
+    public LocalDateTime getOpen() {
+        return open;
+    }
+
+    public LocalDateTime getLastEdit() {
+        return lastEdit;
     }
 }

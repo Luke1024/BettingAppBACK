@@ -4,9 +4,9 @@ import com.betting.application.clients.ApiFootballClient;
 import com.betting.application.clients.dto.MatchDataResponse;
 import com.betting.application.clients.dto.MatchOddsDto;
 import com.betting.application.clients.dto.OddsResponse;
-import com.betting.application.domain.Bet;
+import com.betting.application.domain.SportEvent;
 import com.betting.application.domain.dto.OddsDto;
-import com.betting.application.repository.BetRepository;
+import com.betting.application.repository.SportEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,25 +16,26 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class BetDownloaderService {
+public class SportEventService {
     @Autowired
     private ApiFootballClient apiFootballClient;
 
     @Autowired
-    private BetRepository betRepository;
+    private SportEventRepository sportEventRepository;
 
-    public List<Bet> getAvailableBets(){
-        return betRepository.findAll();
+    public List<SportEvent> getAvailableBets(){
+        return sportEventRepository.findAll().stream().filter(sportEvent -> sportEvent.getMatch_status().equals("")).collect(Collectors.toList());
     }
 
     public void downloadAvailableBets(){
         OddsResponse[] odds = apiFootballClient.getAvailableMatches();
         List<MatchOddsDto> matchOddsDtos = groupToMatchOddsDto(odds);
         List<MatchOddsDto> matchOddsAverages = computeAverageOddsBasedOnMultipleBrokersData(matchOddsDtos);
-        List<Bet> bets = collectMatchDataByMatchId(matchOddsAverages);
-        bets.stream().forEach(bet -> betRepository.save(bet));
+        List<SportEvent> sportEvents = collectMatchDataByMatchId(matchOddsAverages);
+        sportEvents.forEach(sportEvent -> sportEventRepository.save(sportEvent));
     }
 
 
@@ -106,14 +107,14 @@ public class BetDownloaderService {
         return uniqueIds;
     }
 
-    public List<Bet> collectMatchDataByMatchId(List<MatchOddsDto> matchOdds) {
-        List<Bet> betDtos = new ArrayList<>();
+    public List<SportEvent> collectMatchDataByMatchId(List<MatchOddsDto> matchOdds) {
+        List<SportEvent> sportEventDtos = new ArrayList<>();
 
         for (MatchOddsDto matchOddsDto : matchOdds) {
 
             MatchDataResponse matchDataResponse = apiFootballClient.matchDataResponses(matchOddsDto.getMatch_id())[0];
 
-            betDtos.add(new Bet(Long.parseLong(matchDataResponse.getMatch_id()),
+            sportEventDtos.add(new SportEvent(Long.parseLong(matchDataResponse.getMatch_id()),
                     Long.parseLong(matchDataResponse.getCountry_id()),
                     Long.parseLong(matchDataResponse.getLeague_id()),
                     matchDataResponse.getCountry_name(),
@@ -124,6 +125,6 @@ public class BetDownloaderService {
                     matchOddsDto.getOddsDtos().get(0),
                     matchDataResponse.getMatch_status()));
         }
-        return betDtos;
+        return sportEventDtos;
     }
 }

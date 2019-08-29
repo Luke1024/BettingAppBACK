@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class BetDownloaderServiceTest {
 
     @Autowired
-    private BetDownloaderService betDownloaderService;
+    private SportEventService betDownloaderService;
 
     @Test
     public void getAvailableBets() {

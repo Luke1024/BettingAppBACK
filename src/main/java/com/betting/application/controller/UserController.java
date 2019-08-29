@@ -1,5 +1,4 @@
 package com.betting.application.controller;
-
 import com.betting.application.domain.dto.LoginDto;
 import com.betting.application.domain.dto.UserDto;
 import com.betting.application.mapper.UserMapper;
@@ -24,14 +23,31 @@ public class UserController {
     private UserMapper userMapper;
 
     @PostMapping(value = "/users", consumes = APPLICATION_JSON_VALUE)
-    public void registerUser(@RequestBody UserDto userDto){
-        LOGGER.info("Saving user: " + userDto.getFirstname() + " " + userDto.getLastname());
-        System.out.println(userDto.getFirstname() + " " + userDto.getLastname() + " " + userDto.getPassword() + " " + userDto.getEmail());
-        userService.saveUser(userMapper.mapToUser(userDto));
+    public boolean registerUser(@RequestBody UserDto userDto){
+        LOGGER.info("Saving user: " + userDto.getFirstname() + " " + userDto.getLastname() + " " + userDto.getPassword() + " " + userDto.getEmail());
+        return userService.saveUser(userMapper.mapToUser(userDto));
     }
 
-    @PutMapping(value = "/users", consumes = APPLICATION_JSON_VALUE)
-    public void loginUser(@RequestBody LoginDto loginDto){
+    @PostMapping(value = "/users/login", consumes = APPLICATION_JSON_VALUE)
+    public boolean loginUser(@RequestBody LoginDto loginDto){
         LOGGER.info("Logging user with email: " + loginDto.getEmail());
+        return userService.loginUser(loginDto);
+    }
+
+    @PostMapping(value = "/users/logout", consumes = APPLICATION_JSON_VALUE)
+    public void logOutUser(@RequestBody LoginDto loginDto){
+        LOGGER.info("Logout user with email: " + loginDto.getEmail() + " " + loginDto.getPassword());
+    }
+
+    @PutMapping(value = "users/password", consumes = APPLICATION_JSON_VALUE)
+    public void changeUserPassword(@RequestBody LoginDto loginDto){
+        LOGGER.info("Changing user password to: " + loginDto.getPassword());
+    }
+
+    @PutMapping(value = "users/block", consumes = APPLICATION_JSON_VALUE)
+
+    @DeleteMapping(value = "/users", consumes = APPLICATION_JSON_VALUE)
+    public void deleteUser(@RequestBody LoginDto loginDto){
+        LOGGER.info("Delete user with email: " + loginDto.getEmail() + " " + loginDto.getPassword());
     }
 }

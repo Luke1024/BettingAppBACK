@@ -1,14 +1,14 @@
 package com.betting.application.repository;
 
-import com.betting.application.domain.Bet;
+import com.betting.application.domain.SportEvent;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface BetRepository extends CrudRepository<Bet, Long> {
+public interface SportEventRepository extends CrudRepository<SportEvent, Long> {
 
     @Override
-    List<Bet> findAll();
+    List<SportEvent> findAll();
 }
