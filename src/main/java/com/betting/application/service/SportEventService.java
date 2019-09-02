@@ -26,6 +26,7 @@ public class SportEventService {
     @Autowired
     private SportEventRepository sportEventRepository;
 
+
     public List<SportEvent> getAvailableBets(){
         return sportEventRepository.findAll().stream().filter(sportEvent -> sportEvent.getMatch_status().equals("")).collect(Collectors.toList());
     }
@@ -37,7 +38,6 @@ public class SportEventService {
         List<SportEvent> sportEvents = collectMatchDataByMatchId(matchOddsAverages);
         sportEvents.forEach(sportEvent -> sportEventRepository.save(sportEvent));
     }
-
 
     private List<MatchOddsDto> groupToMatchOddsDto(OddsResponse[] odds) {
 
@@ -122,7 +122,9 @@ public class SportEventService {
                     LocalDateTime.of(LocalDate.parse(matchDataResponse.getMatch_date()), LocalTime.parse(matchDataResponse.getMatch_time())),
                     matchDataResponse.getMatch_hometeam_name(),
                     matchDataResponse.getMatch_awayteam_name(),
-                    matchOddsDto.getOddsDtos().get(0),
+                    matchOddsDto.getOddsDtos().get(0).getOdd_1(),
+                    matchOddsDto.getOddsDtos().get(0).getOdd_x(),
+                    matchOddsDto.getOddsDtos().get(0).getOdd_2(),
                     matchDataResponse.getMatch_status()));
         }
         return sportEventDtos;

@@ -1,9 +1,7 @@
 package com.betting.application.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.NamedNativeQuery;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @NamedNativeQuery(
@@ -26,9 +24,30 @@ public class User {
     private String lastName;
     private String password;
     private String email;
+
+    @OneToMany(
+            targetEntity = Bet.class,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
     private List<Bet> bets;
-    private List<Bet> betsArchive;
+    @OneToMany(
+            targetEntity = UserActivity.class,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<String> userActivity;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private BetAccount account;
+    @OneToMany(
+            targetEntity = BankAccount.class,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<BankAccount> bankAccounts;
 
     public User() {}
 
@@ -37,6 +56,7 @@ public class User {
         this.lastName = lastName;
         this.password = password;
         this.email = email;
+        this.userActivity = new ArrayList<>();
     }
 
     public User(Long id ,String firstName, String lastName, String password, String email) {
@@ -65,5 +85,17 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public List<Bet> getBets() {
+        return bets;
+    }
+
+    public List<String> getUserActivity() {
+        return userActivity;
+    }
+
+    public BetAccount getAccount() {
+        return account;
     }
 }
