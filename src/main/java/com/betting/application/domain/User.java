@@ -95,7 +95,7 @@ public class User {
         return userActivity;
     }
 
-    public BetAccount getAccount() {
+    public BetAccount getBetAccount() {
         return account;
     }
 
