@@ -1,6 +1,5 @@
 package com.betting.application.controller;
 
-import com.betting.application.domain.UserActivity;
 import com.betting.application.domain.dto.UserActivityDto;
 import com.betting.application.mapper.UserActivityMapper;
 import com.betting.application.service.UserActivityService;

@@ -98,4 +98,8 @@ public class User {
     public BetAccount getAccount() {
         return account;
     }
+
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
 }
