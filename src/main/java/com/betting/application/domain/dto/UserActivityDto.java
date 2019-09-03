@@ -1,21 +1,16 @@
-package com.betting.application.domain;
+package com.betting.application.domain.dto;
 
-import javax.persistence.*;
+import com.betting.application.domain.User;
+
 import java.time.LocalDateTime;
 
-@Entity
-public class UserActivity {
-    @Id
+public class UserActivityDto {
     private Long id;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "USER_ID")
     private User user;
     private String activityType;
     private LocalDateTime localDateTime;
 
-    public UserActivity() {}
-
-    public UserActivity(Long id, User user, String activityType, LocalDateTime localDateTime) {
+    public UserActivityDto(Long id, User user, String activityType, LocalDateTime localDateTime) {
         this.id = id;
         this.user = user;
         this.activityType = activityType;

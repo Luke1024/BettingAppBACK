@@ -38,7 +38,7 @@ public class User {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<String> userActivity;
+    private List<UserActivity> userActivity;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private BetAccount account;
     @OneToMany(
@@ -91,7 +91,7 @@ public class User {
         return bets;
     }
 
-    public List<String> getUserActivity() {
+    public List<UserActivity> getUserActivity() {
         return userActivity;
     }
 
