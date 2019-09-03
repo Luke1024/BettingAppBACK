@@ -44,7 +44,7 @@ public class UserController {
         LOGGER.info("Changing user password to: " + loginDto.getPassword());
     }
 
-    @PutMapping(value = "users/block", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value = "users/block")
 
     @DeleteMapping(value = "/users", consumes = APPLICATION_JSON_VALUE)
     public void deleteUser(@RequestBody LoginDto loginDto){

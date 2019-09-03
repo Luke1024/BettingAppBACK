@@ -27,6 +27,6 @@ public class SportEventController {
 
     @GetMapping(value = "/getAvailableSportEvents")
     public List<SportEventDto> getHotBets(){
-        return sportEventMapper.mapToBetDtoList(sportEventService.getAvailableBets());
+        return sportEventMapper.mapToBetDtoList(sportEventService.getAvailableSportEvents());
     }
 }

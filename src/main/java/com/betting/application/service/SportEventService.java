@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,12 +27,15 @@ public class SportEventService {
     @Autowired
     private SportEventRepository sportEventRepository;
 
+    public Optional<SportEvent> getSportEvent(Long id){
+        return sportEventRepository.findById(id);
+    }
 
-    public List<SportEvent> getAvailableBets(){
+    public List<SportEvent> getAvailableSportEvents(){
         return sportEventRepository.findAll().stream().filter(sportEvent -> sportEvent.getMatch_status().equals("")).collect(Collectors.toList());
     }
 
-    public void downloadAvailableBets(){
+    public void downloadAvailableSportEvents(){
         OddsResponse[] odds = apiFootballClient.getAvailableMatches();
         List<MatchOddsDto> matchOddsDtos = groupToMatchOddsDto(odds);
         List<MatchOddsDto> matchOddsAverages = computeAverageOddsBasedOnMultipleBrokersData(matchOddsDtos);

@@ -15,6 +15,6 @@ public class BetDownloaderServiceTest {
 
     @Test
     public void getAvailableBets() {
-        betDownloaderService.downloadAvailableBets();
+        betDownloaderService.downloadAvailableSportEvents();
     }
 }
