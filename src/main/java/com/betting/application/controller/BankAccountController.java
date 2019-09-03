@@ -1,6 +1,6 @@
 package com.betting.application.controller;
 
-import com.betting.application.domain.BankAccount;
+import com.betting.application.domain.dto.BankAccountCreationDto;
 import com.betting.application.domain.dto.BankAccountDto;
 import com.betting.application.mapper.BankAccountMapper;
 import com.betting.application.service.BankAccountService;
@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @CrossOrigin("*")
 @RestController
@@ -19,8 +21,18 @@ public class BankAccountController {
     @Autowired
     private BankAccountMapper bankAccountMapper;
 
-    @GetMapping(value = "/getUserBankAccount")
+    @GetMapping(value = "/userBankAccount")
     public List<BankAccountDto> getUserBankAccountController(@PathVariable Long userId){
         return bankAccountMapper.mapToBankAccountDtoList(bankAccountService.getUserBankAccounts(userId));
+    }
+
+    @PostMapping(value = "userBankAccount", consumes = APPLICATION_JSON_VALUE)
+    public void createUserBankAccount(@RequestBody BankAccountCreationDto bankAccountCreationDto) {
+        bankAccountService.createBankAccount(bankAccountCreationDto);
+    }
+
+    @PutMapping(value = "userBankAccount", consumes = APPLICATION_JSON_VALUE)
+    public void updateUserBankAccount(@RequestBody BankAccountUpdateDto bankAccountUpdateDto) {
+        bankAccountService.updateBankAccount(bankAccountCreationDto);
     }
 }

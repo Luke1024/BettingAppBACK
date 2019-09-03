@@ -1,10 +1,12 @@
 package com.betting.application.controller;
 
-import com.betting.application.domain.AccountHistoryPoint;
+import com.betting.application.domain.dto.AccountHistoryPointDto;
 import com.betting.application.mapper.AccountHistoryPointMapper;
 import com.betting.application.service.AccountHistoryPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
@@ -18,7 +20,8 @@ public class AccountHistoryPointController {
     private AccountHistoryPointMapper accountHistoryPointMapper;
 
     @GetMapping(value = "/accountHistoryPoints")
-    public void getHistoryPoints(@PathVariable Long userId){
-        accountHistoryPointMapper.mapToAccountHistoryPointList(accountHistoryPointService.getUserAccountHistoryPoints(userId));
+    public List<AccountHistoryPointDto> getHistoryPoints(@PathVariable Long userId){
+        return accountHistoryPointMapper.mapToAccountHistoryPointList(
+                accountHistoryPointService.getUserAccountHistoryPoints(userId));
     }
 }
