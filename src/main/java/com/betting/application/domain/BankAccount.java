@@ -24,6 +24,19 @@ public class BankAccount {
 
     public BankAccount() {}
 
+    public BankAccount(String bankName, String bankNumber, User user) {
+        this.bankName = bankName;
+        this.bankNumber = bankNumber;
+        this.user = user;
+    }
+
+    public BankAccount(Long bankAccountId, String bankName, String bankNumber, User user) {
+        this.bankAccountId = bankAccountId;
+        this.bankName = bankName;
+        this.bankNumber = bankNumber;
+        this.user = user;
+    }
+
     public BankAccount(Long bankAccountId, BankAccountPersonalData bankAccountPersonalData, String bankName, String bankNumber, User user, List<Transaction> transactions) {
         this.bankAccountId = bankAccountId;
         this.bankAccountPersonalData = bankAccountPersonalData;
@@ -31,6 +44,10 @@ public class BankAccount {
         this.bankNumber = bankNumber;
         this.user = user;
         this.transactions = transactions;
+    }
+
+    public void setBankAccountPersonalData(BankAccountPersonalData bankAccountPersonalData) {
+        this.bankAccountPersonalData = bankAccountPersonalData;
     }
 
     public Long getBankAccountId() {

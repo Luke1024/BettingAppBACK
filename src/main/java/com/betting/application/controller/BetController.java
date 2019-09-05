@@ -1,7 +1,7 @@
 package com.betting.application.controller;
 
-import com.betting.application.domain.dto.BetDto;
-import com.betting.application.domain.dto.BetPlacerDto;
+import com.betting.application.domain.dto.bet.BetDto;
+import com.betting.application.domain.dto.bet.BetPlacerDto;
 import com.betting.application.mapper.BetMapper;
 import com.betting.application.service.BetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +30,11 @@ public class BetController {
     @GetMapping(value = "/getUserArchivedBets")
     public List<BetDto> getUserArchivedBets(@PathVariable Long userId){
         return betMapper.mapToBetDtoList(betService.getUserArchivedBets(userId));
+    }
+
+    @GetMapping(value = "/getUserBetsAvailableForEdition")
+    public List<BetDto> getUserBetsAvailableForEdition(@PathVariable Long userId){
+        return betMapper.mapToBetDtoList(betService.getUserBetsAvailableForEdition(userId));
     }
 
     @GetMapping(value = "/getUserBets")

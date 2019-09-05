@@ -1,4 +1,4 @@
-package com.betting.application.domain.dto;
+package com.betting.application.domain.dto.user;
 
 public class UserDto {
     private String firstname;

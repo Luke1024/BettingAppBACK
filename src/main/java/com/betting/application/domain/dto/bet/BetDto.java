@@ -1,4 +1,4 @@
-package com.betting.application.domain.dto;
+package com.betting.application.domain.dto.bet;
 
 import com.betting.application.domain.utilities.Result;
 
@@ -19,9 +19,10 @@ public class BetDto {
     private LocalDateTime eventTime;
     private LocalDateTime lastEdit;
 
-    public BetDto(){}
+    public BetDto() {
+    }
 
-    public BetDto(Long betId ,Long userId, Long matchId, double amount, Result userPredicton, Result actualResult, double odd_1, double odd_x, double odd_2, double amoutChangeAfterClosing, LocalDateTime open, LocalDateTime eventTime, LocalDateTime lastEdit) {
+    public BetDto(Long betId, Long userId, Long matchId, double amount, Result userPredicton, Result actualResult, double odd_1, double odd_x, double odd_2, double amoutChangeAfterClosing, LocalDateTime open, LocalDateTime eventTime, LocalDateTime lastEdit) {
         this.betId = betId;
         this.userId = userId;
         this.matchId = matchId;

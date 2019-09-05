@@ -1,7 +1,8 @@
 package com.betting.application.controller;
 
-import com.betting.application.domain.dto.BankAccountCreationDto;
-import com.betting.application.domain.dto.BankAccountDto;
+import com.betting.application.domain.dto.bankaccount.BankAccountCreationDto;
+import com.betting.application.domain.dto.bankaccount.BankAccountDto;
+import com.betting.application.domain.dto.bankaccount.BankAccountUpdaterDto;
 import com.betting.application.mapper.BankAccountMapper;
 import com.betting.application.service.BankAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class BankAccountController {
     }
 
     @PutMapping(value = "userBankAccount", consumes = APPLICATION_JSON_VALUE)
-    public void updateUserBankAccount(@RequestBody BankAccountUpdateDto bankAccountUpdateDto) {
-        bankAccountService.updateBankAccount(bankAccountCreationDto);
+    public void updateUserBankAccount(@RequestBody BankAccountUpdaterDto bankAccountUpdaterDto) {
+        bankAccountService.updateBankAccount(bankAccountUpdaterDto);
     }
 }

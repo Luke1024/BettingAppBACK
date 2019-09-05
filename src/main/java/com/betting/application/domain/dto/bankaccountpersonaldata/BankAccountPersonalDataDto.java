@@ -1,11 +1,6 @@
-package com.betting.application.domain;
+package com.betting.application.domain.dto.bankaccountpersonaldata;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
-public class BankAccountPersonalData {
-    @Id
+public class BankAccountPersonalDataDto {
     private Long personalDataId;
     private String firstName;
     private String lastName;
@@ -14,18 +9,7 @@ public class BankAccountPersonalData {
     private String postalCode;
     private String adress;
 
-    public BankAccountPersonalData() {}
-
-    public BankAccountPersonalData(String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.stateProvinceRegion = stateProvinceRegion;
-        this.city = city;
-        this.postalCode = postalCode;
-        this.adress = adress;
-    }
-
-    public BankAccountPersonalData(Long personalDataId, String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
+    public BankAccountPersonalDataDto(Long personalDataId, String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
         this.personalDataId = personalDataId;
         this.firstName = firstName;
         this.lastName = lastName;

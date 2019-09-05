@@ -1,4 +1,4 @@
-package com.betting.application.domain.dto;
+package com.betting.application.domain.dto.bet;
 
 import com.betting.application.domain.utilities.Result;
 

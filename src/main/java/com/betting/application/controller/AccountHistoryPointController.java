@@ -20,7 +20,7 @@ public class AccountHistoryPointController {
     private AccountHistoryPointMapper accountHistoryPointMapper;
 
     @GetMapping(value = "/accountHistoryPoints")
-    public List<AccountHistoryPointDto> getHistoryPoints(@PathVariable Long userId){
+    public List<AccountHistoryPointDto> getAccountHistoryPoints(@PathVariable Long userId){
         return accountHistoryPointMapper.mapToAccountHistoryPointList(
                 accountHistoryPointService.getUserAccountHistoryPoints(userId));
     }

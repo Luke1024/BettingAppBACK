@@ -1,19 +1,28 @@
 package com.betting.application.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.betting.application.domain.dto.transaction.TransactionCreatorDto;
+import com.betting.application.domain.dto.transaction.TransactionDto;
+import com.betting.application.service.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/betting")
 public class TransactionController {
 
-    public getUserTransactions(Long userId){
+    @Autowired
+    private TransactionService transactionService;
 
+    @GetMapping(value = "/userTransactions")
+    public List<TransactionDto> getUserTransactions(@RequestParam Long userId){
+        return transactionService.getUserTransactions(userId);
     }
 
-    public createTransaction(TransactionDto transactionDto){
-
+    @PostMapping(value = "/userTransactions")
+    public void createTransaction(@RequestBody TransactionCreatorDto transactionCreatorDto){
+        transactionService.createUserTransaction(transactionCreatorDto);
     }
 }

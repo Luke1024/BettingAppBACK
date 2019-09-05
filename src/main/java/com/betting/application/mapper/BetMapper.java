@@ -1,7 +1,7 @@
 package com.betting.application.mapper;
 
 import com.betting.application.domain.Bet;
-import com.betting.application.domain.dto.BetDto;
+import com.betting.application.domain.dto.bet.BetDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

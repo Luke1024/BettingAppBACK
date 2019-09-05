@@ -1,4 +1,4 @@
-package com.betting.application.domain.dto;
+package com.betting.application.domain.dto.bankaccount;
 
 import com.betting.application.domain.BankAccountPersonalData;
 import com.betting.application.domain.Transaction;

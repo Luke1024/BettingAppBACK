@@ -1,6 +1,6 @@
 package com.betting.application.controller;
-import com.betting.application.domain.dto.LoginDto;
-import com.betting.application.domain.dto.UserDto;
+import com.betting.application.domain.dto.user.LoginDto;
+import com.betting.application.domain.dto.user.UserDto;
 import com.betting.application.mapper.UserMapper;
 import com.betting.application.service.UserService;
 import org.slf4j.Logger;

@@ -1,7 +1,7 @@
 package com.betting.application.service;
 
 import com.betting.application.domain.User;
-import com.betting.application.domain.dto.LoginDto;
+import com.betting.application.domain.dto.user.LoginDto;
 import com.betting.application.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

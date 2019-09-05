@@ -3,11 +3,12 @@ package com.betting.application.service;
 import com.betting.application.domain.Bet;
 import com.betting.application.domain.SportEvent;
 import com.betting.application.domain.User;
-import com.betting.application.domain.dto.BetPlacerDto;
+import com.betting.application.domain.dto.bet.BetPlacerDto;
 import com.betting.application.repository.BetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,6 +31,15 @@ public class BetService {
     public List<Bet> getUserArchivedBets(Long id){
         return userService.getUser(id).get().getBets().stream().filter(bet -> bet.isArchived()==true)
                 .collect(Collectors.toList());
+    }
+
+    public List<Bet> getUserBetsAvailableForEdition(Long userId){
+        Optional<User> user = userService.getUser(userId);
+        List<Bet> bets = new ArrayList<>();
+        if(user.isPresent()){
+            bets = user.get().getBets().stream().filter(bet -> bet.getActualResult()==null).collect(Collectors.toList());
+        } else {}
+        return bets;
     }
 
     public void saveBet(BetPlacerDto betPlacerDto){
