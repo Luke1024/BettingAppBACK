@@ -1,6 +1,6 @@
 package com.betting.application.domain.dto.bankaccount;
 
-import com.betting.application.domain.BankAccountPersonalData;
+import com.betting.application.domain.PersonalData;
 import com.betting.application.domain.Transaction;
 import com.betting.application.domain.User;
 
@@ -8,15 +8,15 @@ import java.util.List;
 
 public class BankAccountDto {
     private Long bankAccountId;
-    private BankAccountPersonalData bankAccountPersonalData;
+    private PersonalData personalData;
     private String bankName;
     private String bankNumber;
     private User user;
     private List<Transaction> transactionList;
 
-    public BankAccountDto(Long bankAccountId, BankAccountPersonalData bankAccountPersonalData, String bankName, String bankNumber, User user, List<Transaction> transactionList) {
+    public BankAccountDto(Long bankAccountId, PersonalData personalData, String bankName, String bankNumber, User user, List<Transaction> transactionList) {
         this.bankAccountId = bankAccountId;
-        this.bankAccountPersonalData = bankAccountPersonalData;
+        this.personalData = personalData;
         this.bankName = bankName;
         this.bankNumber = bankNumber;
         this.user = user;
@@ -27,8 +27,8 @@ public class BankAccountDto {
         return bankAccountId;
     }
 
-    public BankAccountPersonalData getBankAccountPersonalData() {
-        return bankAccountPersonalData;
+    public PersonalData getPersonalData() {
+        return personalData;
     }
 
     public String getBankName() {

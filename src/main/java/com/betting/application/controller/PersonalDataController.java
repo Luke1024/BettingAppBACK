@@ -1,6 +1,6 @@
 package com.betting.application.controller;
 
-import com.betting.application.domain.dto.bankaccountpersonaldata.BankAccountPersonalDataDto;
+import com.betting.application.domain.dto.bankaccountpersonaldata.PersonalDataDto;
 import com.betting.application.domain.dto.bankaccountpersonaldata.PersonalDataCreatorDto;
 import com.betting.application.mapper.PersonalDataMapper;
 import com.betting.application.service.PersonalDataService;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/betting")
-public class BankAccountPersonalDataController {
+public class PersonalDataController {
 
     @Autowired
     private PersonalDataService personalDataService;
@@ -19,7 +19,7 @@ public class BankAccountPersonalDataController {
     private PersonalDataMapper personalDataMapper;
 
     @GetMapping(value="/userBankAccountPersonalData")
-    public BankAccountPersonalDataDto getBankAccountPersonalData(@PathVariable Long accountId){
+    public PersonalDataDto getBankAccountPersonalData(@PathVariable Long accountId){
         return personalDataMapper.mapToBankAccountPersonalDataDto(
                 personalDataService.getUserBankAccountPersonalData(accountId));
     }

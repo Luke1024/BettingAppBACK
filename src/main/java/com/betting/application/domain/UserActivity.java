@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 @Entity
 public class UserActivity {
     @Id
+    @GeneratedValue
     private Long id;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")

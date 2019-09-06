@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class SportEvent {
     @Id
-    @Autowired
+    @GeneratedValue
     private Long match_id;
     private Long country_id;
     private Long leaque_id;

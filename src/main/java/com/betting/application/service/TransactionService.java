@@ -1,12 +1,10 @@
 package com.betting.application.service;
 
-import com.betting.application.domain.AccountHistoryPoint;
-import com.betting.application.domain.BankAccount;
-import com.betting.application.domain.Transaction;
-import com.betting.application.domain.User;
+import com.betting.application.domain.*;
 import com.betting.application.domain.dto.transaction.TransactionCreatorDto;
 import com.betting.application.domain.dto.transaction.TransactionDto;
 import com.betting.application.repository.BankAccountRepository;
+import com.betting.application.repository.BetAccountRepository;
 import com.betting.application.repository.TransactionRepository;
 import com.betting.application.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,12 @@ public class TransactionService {
 
     @Autowired
     private TransactionRepository transactionRepository;
+
+    @Autowired
+    private AccountHistoryPointService accountHistoryPointService;
+
+    @Autowired
+    private BetAccountRepository betAccountRepository;
 
     public List<TransactionDto> getUserTransactions(Long userId){
         Optional<User> user = userRepository.findById(userId);

@@ -1,7 +1,7 @@
 package com.betting.application.service;
 
 import com.betting.application.domain.BankAccount;
-import com.betting.application.domain.BankAccountPersonalData;
+import com.betting.application.domain.PersonalData;
 import com.betting.application.domain.dto.bankaccountpersonaldata.PersonalDataCreatorDto;
 import com.betting.application.repository.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +14,20 @@ public class PersonalDataService {
     @Autowired
     private BankAccountRepository bankAccountRepository;
 
-    public BankAccountPersonalData getUserBankAccountPersonalData(Long accountId) {
+    public PersonalData getUserBankAccountPersonalData(Long accountId) {
         Optional<BankAccount> bankAccount = bankAccountRepository.findById(accountId);
-        BankAccountPersonalData bankAccountPersonalData = null;
+        PersonalData personalData = null;
         if(bankAccount.isPresent()){
-            bankAccountPersonalData = bankAccount.get().getBankAccountPersonalData();
+            personalData = bankAccount.get().getPersonalData();
         } else {}
-        return bankAccountPersonalData;
+        return personalData;
     }
 
     public void createPersonalData(PersonalDataCreatorDto personalDataCreatorDto) {
          Optional<BankAccount> bankAccount = bankAccountRepository.findById(personalDataCreatorDto.getBankAccountId());
          if(bankAccount.isPresent()){
-             bankAccount.get().setBankAccountPersonalData(
-                     new BankAccountPersonalData(personalDataCreatorDto.getFirstName(),
+             bankAccount.get().setPersonalData(
+                     new PersonalData(personalDataCreatorDto.getFirstName(),
                              personalDataCreatorDto.getLastName(),
                              personalDataCreatorDto.getStateProvinceRegion(),
                              personalDataCreatorDto.getCity(),
@@ -40,8 +40,8 @@ public class PersonalDataService {
     public void updatePersonalData(PersonalDataCreatorDto personalDataCreatorDto) {
         Optional<BankAccount> bankAccount = bankAccountRepository.findById(personalDataCreatorDto.getBankAccountId());
         if(bankAccount.isPresent()){
-            Long personalDataId = bankAccount.get().getBankAccountPersonalData().getPersonalDataId();
-            bankAccount.get().setBankAccountPersonalData(new BankAccountPersonalData(
+            Long personalDataId = bankAccount.get().getPersonalData().getPersonalDataId();
+            bankAccount.get().setPersonalData(new PersonalData(
                     personalDataId,
                     personalDataCreatorDto.getFirstName(),
                     personalDataCreatorDto.getLastName(),

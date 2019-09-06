@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 public class Transaction {
     @Id
+    @GeneratedValue
     private Long transactionId;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private AccountHistoryPoint accountHistoryPoint;

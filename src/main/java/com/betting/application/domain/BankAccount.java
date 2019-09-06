@@ -6,9 +6,10 @@ import java.util.List;
 @Entity
 public class BankAccount {
     @Id
+    @GeneratedValue
     private Long bankAccountId;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private BankAccountPersonalData bankAccountPersonalData;
+    private PersonalData personalData;
     private String bankName;
     private String bankNumber;
     @ManyToOne(cascade = CascadeType.ALL)
@@ -37,25 +38,25 @@ public class BankAccount {
         this.user = user;
     }
 
-    public BankAccount(Long bankAccountId, BankAccountPersonalData bankAccountPersonalData, String bankName, String bankNumber, User user, List<Transaction> transactions) {
+    public BankAccount(Long bankAccountId, PersonalData personalData, String bankName, String bankNumber, User user, List<Transaction> transactions) {
         this.bankAccountId = bankAccountId;
-        this.bankAccountPersonalData = bankAccountPersonalData;
+        this.personalData = personalData;
         this.bankName = bankName;
         this.bankNumber = bankNumber;
         this.user = user;
         this.transactions = transactions;
     }
 
-    public void setBankAccountPersonalData(BankAccountPersonalData bankAccountPersonalData) {
-        this.bankAccountPersonalData = bankAccountPersonalData;
+    public void setPersonalData(PersonalData personalData) {
+        this.personalData = personalData;
     }
 
     public Long getBankAccountId() {
         return bankAccountId;
     }
 
-    public BankAccountPersonalData getBankAccountPersonalData() {
-        return bankAccountPersonalData;
+    public PersonalData getPersonalData() {
+        return personalData;
     }
 
     public String getBankName() {

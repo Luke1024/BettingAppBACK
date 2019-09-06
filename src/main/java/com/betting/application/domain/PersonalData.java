@@ -1,11 +1,13 @@
 package com.betting.application.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class BankAccountPersonalData {
+public class PersonalData {
     @Id
+    @GeneratedValue
     private Long personalDataId;
     private String firstName;
     private String lastName;
@@ -14,9 +16,9 @@ public class BankAccountPersonalData {
     private String postalCode;
     private String adress;
 
-    public BankAccountPersonalData() {}
+    public PersonalData() {}
 
-    public BankAccountPersonalData(String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
+    public PersonalData(String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.stateProvinceRegion = stateProvinceRegion;
@@ -25,7 +27,7 @@ public class BankAccountPersonalData {
         this.adress = adress;
     }
 
-    public BankAccountPersonalData(Long personalDataId, String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
+    public PersonalData(Long personalDataId, String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
         this.personalDataId = personalDataId;
         this.firstName = firstName;
         this.lastName = lastName;

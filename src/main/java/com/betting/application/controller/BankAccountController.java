@@ -27,12 +27,12 @@ public class BankAccountController {
         return bankAccountMapper.mapToBankAccountDtoList(bankAccountService.getUserBankAccounts(userId));
     }
 
-    @PostMapping(value = "userBankAccount", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/userBankAccount", consumes = APPLICATION_JSON_VALUE)
     public void createUserBankAccount(@RequestBody BankAccountCreationDto bankAccountCreationDto) {
         bankAccountService.createBankAccount(bankAccountCreationDto);
     }
 
-    @PutMapping(value = "userBankAccount", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/userBankAccount", consumes = APPLICATION_JSON_VALUE)
     public void updateUserBankAccount(@RequestBody BankAccountUpdaterDto bankAccountUpdaterDto) {
         bankAccountService.updateBankAccount(bankAccountUpdaterDto);
     }

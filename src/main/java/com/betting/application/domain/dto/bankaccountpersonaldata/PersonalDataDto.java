@@ -1,6 +1,6 @@
 package com.betting.application.domain.dto.bankaccountpersonaldata;
 
-public class BankAccountPersonalDataDto {
+public class PersonalDataDto {
     private Long personalDataId;
     private String firstName;
     private String lastName;
@@ -9,7 +9,7 @@ public class BankAccountPersonalDataDto {
     private String postalCode;
     private String adress;
 
-    public BankAccountPersonalDataDto(Long personalDataId, String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
+    public PersonalDataDto(Long personalDataId, String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
         this.personalDataId = personalDataId;
         this.firstName = firstName;
         this.lastName = lastName;

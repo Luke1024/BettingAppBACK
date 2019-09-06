@@ -48,6 +48,13 @@ public class User {
             fetch = FetchType.LAZY
     )
     private List<BankAccount> bankAccounts;
+    @OneToMany(
+            targetEntity = Note.class,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<Note> notes;
 
     public User() {}
 
@@ -101,5 +108,13 @@ public class User {
 
     public List<BankAccount> getBankAccounts() {
         return bankAccounts;
+    }
+
+    public BetAccount getAccount() {
+        return account;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
     }
 }

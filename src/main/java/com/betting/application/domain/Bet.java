@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Bet {
     @Id
+    @GeneratedValue
     private Long betId;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")

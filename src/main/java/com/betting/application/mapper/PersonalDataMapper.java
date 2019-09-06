@@ -1,18 +1,18 @@
 package com.betting.application.mapper;
 
-import com.betting.application.domain.BankAccountPersonalData;
-import com.betting.application.domain.dto.bankaccountpersonaldata.BankAccountPersonalDataDto;
+import com.betting.application.domain.PersonalData;
+import com.betting.application.domain.dto.bankaccountpersonaldata.PersonalDataDto;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PersonalDataMapper {
-    public BankAccountPersonalDataDto mapToBankAccountPersonalDataDto(BankAccountPersonalData bankAccountPersonalData){
-        return new BankAccountPersonalDataDto(bankAccountPersonalData.getPersonalDataId(),
-                bankAccountPersonalData.getFirstName(),
-                bankAccountPersonalData.getLastName(),
-                bankAccountPersonalData.getStateProvinceRegion(),
-                bankAccountPersonalData.getCity(),
-                bankAccountPersonalData.getPostalCode(),
-                bankAccountPersonalData.getAdress());
+    public PersonalDataDto mapToBankAccountPersonalDataDto(PersonalData personalData){
+        return new PersonalDataDto(personalData.getPersonalDataId(),
+                personalData.getFirstName(),
+                personalData.getLastName(),
+                personalData.getStateProvinceRegion(),
+                personalData.getCity(),
+                personalData.getPostalCode(),
+                personalData.getAdress());
     }
 }
