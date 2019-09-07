@@ -4,6 +4,7 @@ import com.betting.application.domain.BankAccount;
 import com.betting.application.domain.PersonalData;
 import com.betting.application.domain.dto.bankaccountpersonaldata.PersonalDataCreatorDto;
 import com.betting.application.repository.BankAccountRepository;
+import com.betting.application.repository.PersonalDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ import java.util.Optional;
 public class PersonalDataService {
     @Autowired
     private BankAccountRepository bankAccountRepository;
+
+    @Autowired
+    private PersonalDataRepository personalDataRepository;
 
     public PersonalData getUserBankAccountPersonalData(Long accountId) {
         Optional<BankAccount> bankAccount = bankAccountRepository.findById(accountId);
@@ -26,30 +30,37 @@ public class PersonalDataService {
     public void createPersonalData(PersonalDataCreatorDto personalDataCreatorDto) {
          Optional<BankAccount> bankAccount = bankAccountRepository.findById(personalDataCreatorDto.getBankAccountId());
          if(bankAccount.isPresent()){
-             bankAccount.get().setPersonalData(
-                     new PersonalData(personalDataCreatorDto.getFirstName(),
-                             personalDataCreatorDto.getLastName(),
-                             personalDataCreatorDto.getStateProvinceRegion(),
-                             personalDataCreatorDto.getCity(),
-                             personalDataCreatorDto.getPostalCode(),
-                             personalDataCreatorDto.getAdress()));
-             bankAccountRepository.save(bankAccount.get());
+             personalDataRepository.save(mapToPersonalData(personalDataCreatorDto, bankAccount.get()));
          } else {}
     }
 
     public void updatePersonalData(PersonalDataCreatorDto personalDataCreatorDto) {
         Optional<BankAccount> bankAccount = bankAccountRepository.findById(personalDataCreatorDto.getBankAccountId());
         if(bankAccount.isPresent()){
-            Long personalDataId = bankAccount.get().getPersonalData().getPersonalDataId();
-            bankAccount.get().setPersonalData(new PersonalData(
-                    personalDataId,
-                    personalDataCreatorDto.getFirstName(),
-                    personalDataCreatorDto.getLastName(),
-                    personalDataCreatorDto.getStateProvinceRegion(),
-                    personalDataCreatorDto.getCity(),
-                    personalDataCreatorDto.getPostalCode(),
-                    personalDataCreatorDto.getAdress()
-            ));
-        }
+            personalDataRepository.save(
+                    mapToPersonalDataUpdate(personalDataCreatorDto, bankAccount.get()));
+        } else {}
+    }
+
+    private PersonalData mapToPersonalData(PersonalDataCreatorDto personalDataCreatorDto, BankAccount bankAccount){
+        return new PersonalData(personalDataCreatorDto.getFirstName(),
+                personalDataCreatorDto.getLastName(),
+                personalDataCreatorDto.getStateProvinceRegion(),
+                personalDataCreatorDto.getCity(),
+                personalDataCreatorDto.getPostalCode(),
+                personalDataCreatorDto.getAdress(),
+                bankAccount);
+    }
+
+    private PersonalData mapToPersonalDataUpdate
+            (PersonalDataCreatorDto personalDataCreatorDto, BankAccount bankAccount){
+        return new PersonalData(bankAccount.getPersonalData().getPersonalDataId(),
+                personalDataCreatorDto.getFirstName(),
+                personalDataCreatorDto.getLastName(),
+                personalDataCreatorDto.getStateProvinceRegion(),
+                personalDataCreatorDto.getCity(),
+                personalDataCreatorDto.getPostalCode(),
+                personalDataCreatorDto.getAdress(),
+                bankAccount);
     }
 }

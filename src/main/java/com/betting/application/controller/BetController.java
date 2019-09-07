@@ -27,22 +27,22 @@ public class BetController {
         betService.saveBet(betPlacerDto);
     }
 
-    @GetMapping(value = "/bets")
+    @GetMapping(value = "/bets/{userId}")
     public List<BetDto> getUserArchivedBets(@PathVariable Long userId){
         return betMapper.mapToBetDtoList(betService.getUserArchivedBets(userId));
     }
 
-    @GetMapping(value = "/betsEdit")
+    @GetMapping(value = "/betsEdit/{userId}")
     public List<BetDto> getUserBetsAvailableForEdition(@PathVariable Long userId){
         return betMapper.mapToBetDtoList(betService.getUserBetsAvailableForEdition(userId));
     }
 
-    @GetMapping(value = "/betsAll")
+    @GetMapping(value = "/betsAll/{userId}")
     public List<BetDto> getUserBets(@PathVariable Long userId){
         return betMapper.mapToBetDtoList(betService.getUserBets(userId));
     }
 
-    @DeleteMapping(value = "/bets")
+    @DeleteMapping(value = "/bets/{betId}")
     public void unarchiveBets(@PathVariable Long betId){
         betService.unarchiveBets(betId);
     }

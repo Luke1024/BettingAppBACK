@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/betting")
@@ -19,17 +21,17 @@ public class NoteController {
     @Autowired
     private NoteMapper noteMapper;
 
-    @GetMapping(value = "/note")
+    @GetMapping(value = "/note/{userId}")
     public List<NoteDto> getUserNotes(@PathVariable Long userId){
         return noteMapper.mapToDtoList(noteService.getUserNotes(userId));
     }
 
-    @PostMapping(value = "/note")
+    @PostMapping(value = "/note", consumes = APPLICATION_JSON_VALUE)
     public void createNote(@RequestBody NoteCreatorDto noteCreatorDto){
         noteService.createNote(noteCreatorDto);
     }
 
-    @PutMapping(value = "/note")
+    @PutMapping(value = "/note", consumes = APPLICATION_JSON_VALUE)
     public void updateNote(@RequestBody NoteDto noteDto){
         noteService.updateNote(noteDto);
     }

@@ -22,7 +22,7 @@ public class BankAccountController {
     @Autowired
     private BankAccountMapper bankAccountMapper;
 
-    @GetMapping(value = "/userBankAccount")
+    @GetMapping(value = "/userBankAccount/{userId}")
     public List<BankAccountDto> getUserBankAccountController(@PathVariable Long userId){
         return bankAccountMapper.mapToBankAccountDtoList(bankAccountService.getUserBankAccounts(userId));
     }

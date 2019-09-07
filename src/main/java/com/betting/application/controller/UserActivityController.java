@@ -19,7 +19,7 @@ public class UserActivityController {
     @Autowired
     private UserActivityMapper userActivityMapper;
 
-    @GetMapping(value = "/activity")
+    @GetMapping(value = "/activity/{userId}")
     public List<UserActivityDto> getUserActivity(@PathVariable Long userId){
         return userActivityMapper.mapToUserActivityDtoList(userActivityService.getUserActivity(userId));
     }

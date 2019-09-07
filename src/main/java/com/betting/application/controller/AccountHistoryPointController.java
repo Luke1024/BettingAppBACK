@@ -27,7 +27,7 @@ public class AccountHistoryPointController {
         return e.getMessage();
     }
 
-    @GetMapping(value = "/accountHistoryPoints")
+    @GetMapping(value = "/accountHistoryPoints/{userId}")
     public List<AccountHistoryPointDto> getAccountHistoryPoints(@PathVariable Long userId) throws UserNotFoundException {
         return accountHistoryPointMapper.mapToAccountHistoryPointList(
                 accountHistoryPointService.getUserAccountHistoryPoints(userId));

@@ -6,6 +6,9 @@ public class BankAccountUpdaterDto {
     private String bankNumber;
     private Long userId;
 
+    public BankAccountUpdaterDto() {
+    }
+
     public BankAccountUpdaterDto(Long bankAccountId, String bankName, String bankNumber, Long userId) {
         this.bankAccountId = bankAccountId;
         this.bankName = bankName;

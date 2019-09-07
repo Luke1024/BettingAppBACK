@@ -1,6 +1,5 @@
 package com.betting.application.mapper;
 
-import com.betting.application.domain.AccountHistoryPoint;
 import com.betting.application.domain.BetAccount;
 import com.betting.application.domain.dto.AccountHistoryPointDto;
 import com.betting.application.domain.dto.BetAccountDto;
@@ -23,9 +22,9 @@ public class BetAccountMapper {
                 betAccount.getAccountHistoryPointList()
                         .stream().map(p -> new AccountHistoryPointDto(p.getPointId(),
                         p.getAccountBalanceChange(),
-                        p.getMoney_amount_before_change(),
-                        p.getMoney_amount_after_change(),
-                        p.getAccount_change_time(),
+                        p.getMoneyAmountBeforeChange(),
+                        p.getMoneyAmountAfterChange(),
+                        p.getAccountChangeTime(),
                         p.getBetAccount(),
                         p.getTransaction())).collect(Collectors.toList()));
     }

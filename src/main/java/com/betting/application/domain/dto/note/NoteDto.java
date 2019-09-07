@@ -5,6 +5,9 @@ public class NoteDto {
     private String content;
     private Long userId;
 
+    public NoteDto() {
+    }
+
     public NoteDto(Long noteId, String content, Long userId) {
         this.noteId = noteId;
         this.content = content;

@@ -33,6 +33,15 @@ public class Bet {
         this.userPrediction = userPrediction;
     }
 
+    public Bet(Long betId, User user, SportEvent sportEvent, double amount, Result userPrediction) {
+        this.betId = betId;
+        this.user = user;
+        this.sportEvent = sportEvent;
+        this.amount = amount;
+        this.userPrediction = userPrediction;
+    }
+
+
     public Long getBetId() {
         return betId;
     }
@@ -75,5 +84,41 @@ public class Bet {
 
     public void setArchived(boolean archived) {
         this.archived = archived;
+    }
+
+    public void setBetId(Long betId) {
+        this.betId = betId;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setSportEvent(SportEvent sportEvent) {
+        this.sportEvent = sportEvent;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setUserPrediction(Result userPrediction) {
+        this.userPrediction = userPrediction;
+    }
+
+    public void setActualResult(Result actualResult) {
+        this.actualResult = actualResult;
+    }
+
+    public void setAmoutChangeAfterClosing(double amoutChangeAfterClosing) {
+        this.amoutChangeAfterClosing = amoutChangeAfterClosing;
+    }
+
+    public void setOpen(LocalDateTime open) {
+        this.open = open;
+    }
+
+    public void setLastEdit(LocalDateTime lastEdit) {
+        this.lastEdit = lastEdit;
     }
 }

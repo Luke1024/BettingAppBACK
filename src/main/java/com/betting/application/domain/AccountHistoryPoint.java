@@ -9,9 +9,9 @@ public class AccountHistoryPoint {
     @GeneratedValue
     private Long pointId;
     private double accountBalanceChange;
-    private double money_amount_before_change;
-    private double money_amount_after_change;
-    private LocalDateTime account_change_time;
+    private double moneyAmountBeforeChange;
+    private double moneyAmountAfterChange;
+    private LocalDateTime accountChangeTime;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "BET_ACCOUNT_ID")
     private BetAccount betAccount;
@@ -20,11 +20,11 @@ public class AccountHistoryPoint {
 
     public AccountHistoryPoint() {}
 
-    public AccountHistoryPoint(double accountBalanceChange, double money_amount_before_change, double money_amount_after_change, LocalDateTime account_change_time, BetAccount betAccount, Transaction transaction) {
+    public AccountHistoryPoint(double accountBalanceChange, double moneyAmountBeforeChange, double moneyAmountAfterChange, LocalDateTime accountChangeTime, BetAccount betAccount, Transaction transaction) {
         this.accountBalanceChange = accountBalanceChange;
-        this.money_amount_before_change = money_amount_before_change;
-        this.money_amount_after_change = money_amount_after_change;
-        this.account_change_time = account_change_time;
+        this.moneyAmountBeforeChange = moneyAmountBeforeChange;
+        this.moneyAmountAfterChange = moneyAmountAfterChange;
+        this.accountChangeTime = accountChangeTime;
         this.betAccount = betAccount;
         this.transaction = transaction;
     }
@@ -37,16 +37,16 @@ public class AccountHistoryPoint {
         return accountBalanceChange;
     }
 
-    public double getMoney_amount_before_change() {
-        return money_amount_before_change;
+    public double getMoneyAmountBeforeChange() {
+        return moneyAmountBeforeChange;
     }
 
-    public double getMoney_amount_after_change() {
-        return money_amount_after_change;
+    public double getMoneyAmountAfterChange() {
+        return moneyAmountAfterChange;
     }
 
-    public LocalDateTime getAccount_change_time() {
-        return account_change_time;
+    public LocalDateTime getAccountChangeTime() {
+        return accountChangeTime;
     }
 
     public BetAccount getBetAccount() {

@@ -1,8 +1,6 @@
 package com.betting.application.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class PersonalData {
@@ -15,19 +13,22 @@ public class PersonalData {
     private String city;
     private String postalCode;
     private String adress;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private BankAccount bankAccount;
 
     public PersonalData() {}
 
-    public PersonalData(String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
+    public PersonalData(String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress, BankAccount bankAccount) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.stateProvinceRegion = stateProvinceRegion;
         this.city = city;
         this.postalCode = postalCode;
         this.adress = adress;
+        this.bankAccount = bankAccount;
     }
 
-    public PersonalData(Long personalDataId, String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress) {
+    public PersonalData(Long personalDataId, String firstName, String lastName, String stateProvinceRegion, String city, String postalCode, String adress, BankAccount bankAccount) {
         this.personalDataId = personalDataId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,6 +36,7 @@ public class PersonalData {
         this.city = city;
         this.postalCode = postalCode;
         this.adress = adress;
+        this.bankAccount = bankAccount;
     }
 
     public Long getPersonalDataId() {
@@ -63,5 +65,9 @@ public class PersonalData {
 
     public String getAdress() {
         return adress;
+    }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
     }
 }
