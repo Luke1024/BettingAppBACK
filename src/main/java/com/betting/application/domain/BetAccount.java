@@ -26,6 +26,13 @@ public class BetAccount {
         this.accountHistoryPointList = accountHistoryPointList;
     }
 
+    public BetAccount(Long id, User user, double amount, List<AccountHistoryPoint> accountHistoryPointList) {
+        this.id = id;
+        this.user = user;
+        this.amount = amount;
+        this.accountHistoryPointList = accountHistoryPointList;
+    }
+
     public Long getId() {
         return id;
     }

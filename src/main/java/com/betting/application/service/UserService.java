@@ -33,7 +33,7 @@ public class UserService {
         if(userByEmail.isEmpty()){
             correctRegistration = false;
         } else {
-            if (userByEmail.get(0).getPassword().equals(loginDto.getPassword())) {
+            if(userByEmail.get(0).getPassword().equals(loginDto.getPassword())) {
                 correctRegistration = true;
             } else {
                 correctRegistration = false;

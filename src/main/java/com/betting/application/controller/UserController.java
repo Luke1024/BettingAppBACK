@@ -34,9 +34,9 @@ public class UserController {
         return userService.loginUser(loginDto);
     }
 
-    @PostMapping(value = "/users/logout", consumes = APPLICATION_JSON_VALUE)
-    public void logOutUser(@RequestBody LoginDto loginDto){
-        LOGGER.info("Logout user with email: " + loginDto.getEmail() + " " + loginDto.getPassword());
+    @PostMapping(value = "/users/logout/{userId}", consumes = APPLICATION_JSON_VALUE)
+    public void logOutUser(@PathVariable Long userId){
+        //return userService.logOutUser(userId);
     }
 
     @PutMapping(value = "users/password", consumes = APPLICATION_JSON_VALUE)

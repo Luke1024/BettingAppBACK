@@ -2,9 +2,11 @@ package com.betting.application.controller;
 
 import com.betting.application.domain.Note;
 import com.betting.application.domain.User;
+import com.betting.application.domain.dto.note.NoteCreatorDto;
 import com.betting.application.domain.dto.note.NoteDto;
 import com.betting.application.mapper.NoteMapper;
 import com.betting.application.service.NoteService;
+import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -60,16 +62,27 @@ public class NoteControllerTest {
 
     @Test
     public void createNote() throws Exception {
+        NoteCreatorDto noteCreatorDto = new NoteCreatorDto("content", 1L);
+        Gson gson = new Gson();
+        String jsonContent = gson.toJson(noteCreatorDto);
+
         mockMvc.perform(post("/betting/note")
                 .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("UTF-8"))
+                .characterEncoding("UTF-8")
+                .content(jsonContent))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void updateNote() throws Exception {
+        NoteDto noteDto = new NoteDto(1L, "content", 1L);
+        Gson gson = new Gson();
+        String jsonContent = gson.toJson(noteDto);
+
         mockMvc.perform(put("/betting/note")
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8")
+                .content(jsonContent))
                 .andExpect(status().isOk());
     }
 }

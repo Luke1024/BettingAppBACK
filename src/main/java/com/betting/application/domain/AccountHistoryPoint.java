@@ -29,6 +29,16 @@ public class AccountHistoryPoint {
         this.transaction = transaction;
     }
 
+    public AccountHistoryPoint(Long pointId, double accountBalanceChange, double moneyAmountBeforeChange, double moneyAmountAfterChange, LocalDateTime accountChangeTime, BetAccount betAccount, Transaction transaction) {
+        this.pointId = pointId;
+        this.accountBalanceChange = accountBalanceChange;
+        this.moneyAmountBeforeChange = moneyAmountBeforeChange;
+        this.moneyAmountAfterChange = moneyAmountAfterChange;
+        this.accountChangeTime = accountChangeTime;
+        this.betAccount = betAccount;
+        this.transaction = transaction;
+    }
+
     public Long getPointId() {
         return pointId;
     }

@@ -7,6 +7,9 @@ public class TransactionCreatorDto {
     private double amount;
     private Long bankAccountId;
 
+    public TransactionCreatorDto() {
+    }
+
     public TransactionCreatorDto(PaymentDirection paymentDirection, double amount, Long bankAccountId) {
         this.paymentDirection = paymentDirection;
         this.amount = amount;

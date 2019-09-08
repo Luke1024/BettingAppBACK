@@ -1,10 +1,7 @@
 package com.betting.application.controller;
 
-import com.betting.application.domain.Bet;
 import com.betting.application.domain.SportEvent;
-import com.betting.application.domain.User;
 import com.betting.application.domain.dto.SportEventDto;
-import com.betting.application.domain.utilities.Result;
 import com.betting.application.mapper.SportEventMapper;
 import com.betting.application.service.SportEventService;
 import org.junit.Test;
@@ -75,6 +72,5 @@ public class SportEventControllerTest {
                 .andExpect(jsonPath("$[0].odd_x", is(2.5)))
                 .andExpect(jsonPath("$[0].odd_2", is(3.5)))
                 .andExpect(jsonPath("$[0].match_status", is("")));
-
     }
 }
