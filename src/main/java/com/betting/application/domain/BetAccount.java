@@ -1,6 +1,7 @@
 package com.betting.application.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class BetAccount {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<AccountHistoryPoint> accountHistoryPointList;
+    private List<AccountHistoryPoint> accountHistoryPointList = new ArrayList<>();
 
     public BetAccount() {}
 
@@ -37,8 +38,16 @@ public class BetAccount {
         return id;
     }
 
+    public void setAccountHistoryPointList(List<AccountHistoryPoint> accountHistoryPointList) {
+        this.accountHistoryPointList = accountHistoryPointList;
+    }
+
     public User getUser() {
         return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public double getAmount() {

@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -43,7 +44,7 @@ public class TransactionControllerTest {
     public void getUserTransactions() throws Exception {
         TransactionDto transactionDto = new TransactionDto(1L, new AccountHistoryPoint(), PaymentDirection.INCOMING, 50.5, new BankAccount());
 
-        List<TransactionDto> transactionDtos = new ArrayList<>(Arrays.asList(transactionDto));
+        List<TransactionDto> transactionDtos = new ArrayList<>(Collections.singletonList(transactionDto));
 
         when(transactionService.getUserTransactions(ArgumentMatchers.anyLong())).thenReturn(transactionDtos);
 

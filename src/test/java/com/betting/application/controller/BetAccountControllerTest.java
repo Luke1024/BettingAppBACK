@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -50,8 +51,8 @@ public class BetAccountControllerTest {
         AccountHistoryPoint accountHistoryPoint = new AccountHistoryPoint(-100.50, 100.50, 0.0, LocalDateTime.now(), new BetAccount(), new Transaction());
 
 
-        BetAccount betAccount = new BetAccount(new User(), 100.50, new ArrayList<>(Arrays.asList(accountHistoryPoint)));
-        BetAccountDto betAccountDto = new BetAccountDto(1L, new User(), 100.50, new ArrayList<>(Arrays.asList(accountHistoryPointDto)));
+        BetAccount betAccount = new BetAccount(new User(), 100.50, new ArrayList<>(Collections.singletonList(accountHistoryPoint)));
+        BetAccountDto betAccountDto = new BetAccountDto(1L, new User(), 100.50, new ArrayList<>(Collections.singletonList(accountHistoryPointDto)));
 
         when(betAccountService.getBetAccount(ArgumentMatchers.anyLong())).thenReturn(betAccount);
         when(betAccountMapper.mapToBetAccountDto(ArgumentMatchers.any(BetAccount.class))).thenReturn(betAccountDto);

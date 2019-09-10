@@ -24,7 +24,8 @@ public class UserController {
 
     @PostMapping(value = "/users", consumes = APPLICATION_JSON_VALUE)
     public boolean registerUser(@RequestBody UserDto userDto){
-        LOGGER.info("Saving user: " + userDto.getFirstname() + " " + userDto.getLastname() + " " + userDto.getPassword() + " " + userDto.getEmail());
+        LOGGER.info("Saving user: " + userDto.getFirstname() + " " + userDto.getLastname()
+                + " " + userDto.getPassword() + " " + userDto.getEmail());
         return userService.saveUser(userMapper.mapToUser(userDto));
     }
 
@@ -35,8 +36,8 @@ public class UserController {
     }
 
     @PostMapping(value = "/users/logout/{userId}", consumes = APPLICATION_JSON_VALUE)
-    public void logOutUser(@PathVariable Long userId){
-        //return userService.logOutUser(userId);
+    public boolean logOutUser(@PathVariable Long userId) throws Exception {
+        return userService.logOutUser(userId);
     }
 
     @PutMapping(value = "users/password", consumes = APPLICATION_JSON_VALUE)

@@ -40,7 +40,7 @@ public class User {
     )
     private List<UserActivity> userActivity;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private BetAccount account;
+    private BetAccount betAccount;
     @OneToMany(
             targetEntity = BankAccount.class,
             mappedBy = "user",
@@ -55,6 +55,7 @@ public class User {
             fetch = FetchType.LAZY
     )
     private List<Note> notes;
+    private boolean loggedIn = false;
 
     public User() {}
 
@@ -74,8 +75,26 @@ public class User {
         this.email = email;
     }
 
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
+    }
+
+    public boolean getLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -102,16 +121,16 @@ public class User {
         return userActivity;
     }
 
-    public BetAccount getBetAccount() {
-        return account;
+    public void setBetAccount(BetAccount betAccount) {
+        this.betAccount = betAccount;
     }
 
     public List<BankAccount> getBankAccounts() {
         return bankAccounts;
     }
 
-    public BetAccount getAccount() {
-        return account;
+    public BetAccount getBetAccount() {
+        return betAccount;
     }
 
     public List<Note> getNotes() {

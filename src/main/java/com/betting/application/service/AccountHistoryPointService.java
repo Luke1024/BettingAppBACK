@@ -19,7 +19,7 @@ public class AccountHistoryPointService {
 
     public List<AccountHistoryPoint> getUserAccountHistoryPoints(Long userId) throws UserNotFoundException {
         Optional<User> user = userRepository.findById(userId);
-        List<AccountHistoryPoint> accountHistoryPoints = new ArrayList<>();
+        List<AccountHistoryPoint> accountHistoryPoints;
         if(user.isPresent()){
             accountHistoryPoints = user.get().getBetAccount().getAccountHistoryPointList();
         } else {

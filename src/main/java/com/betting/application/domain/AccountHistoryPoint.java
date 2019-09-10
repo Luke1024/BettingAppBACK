@@ -63,6 +63,10 @@ public class AccountHistoryPoint {
         return betAccount;
     }
 
+    public void setBetAccount(BetAccount betAccount) {
+        this.betAccount = betAccount;
+    }
+
     public Transaction getTransaction() {
         return transaction;
     }

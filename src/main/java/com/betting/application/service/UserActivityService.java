@@ -2,7 +2,6 @@ package com.betting.application.service;
 
 import com.betting.application.domain.User;
 import com.betting.application.domain.UserActivity;
-import com.betting.application.repository.UserActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

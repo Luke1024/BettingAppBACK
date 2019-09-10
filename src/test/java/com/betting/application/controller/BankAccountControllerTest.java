@@ -29,6 +29,7 @@ import static org.hamcrest.Matchers.hasSize;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BankAccountController.class)
@@ -56,8 +57,8 @@ public class BankAccountControllerTest {
 
     @Test
     public void getUserBankAccountController() throws Exception {
-        when(bankAccountService.getUserBankAccounts(ArgumentMatchers.anyLong())).thenReturn(new ArrayList<>(Arrays.asList(bankAccount)));
-        when(bankAccountMapper.mapToBankAccountDtoList(ArgumentMatchers.anyList())).thenReturn(new ArrayList<>(Arrays.asList(bankAccountDto)));
+        when(bankAccountService.getUserBankAccounts(ArgumentMatchers.anyLong())).thenReturn(new ArrayList<>(Collections.singletonList(bankAccount)));
+        when(bankAccountMapper.mapToBankAccountDtoList(ArgumentMatchers.anyList())).thenReturn(new ArrayList<>(Collections.singletonList(bankAccountDto)));
         mockMvc.perform(get("/betting/userBankAccount/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

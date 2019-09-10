@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -48,9 +49,9 @@ public class AccountHistoryPointControllerTest {
         AccountHistoryPoint accountHistoryPoint = new AccountHistoryPoint(-100.50, 100.50, 0.0, LocalDateTime.now(), new BetAccount(), new Transaction());
 
         List<AccountHistoryPointDto> accountHistoryPointDtoList
-                = new ArrayList<>(Arrays.asList(accountHistoryPointDto));
+                = new ArrayList<>(Collections.singletonList(accountHistoryPointDto));
         List<AccountHistoryPoint> accountHistoryPoints
-                = new ArrayList<>(Arrays.asList(accountHistoryPoint));
+                = new ArrayList<>(Collections.singletonList(accountHistoryPoint));
 
         when(accountHistoryPointService.getUserAccountHistoryPoints(ArgumentMatchers.anyLong())).thenReturn(accountHistoryPoints);
         when(accountHistoryPointMapper.mapToAccountHistoryPointList(ArgumentMatchers.anyList())).thenReturn(accountHistoryPointDtoList);

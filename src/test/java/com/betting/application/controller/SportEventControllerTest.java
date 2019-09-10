@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -45,13 +46,13 @@ public class SportEventControllerTest {
                 new SportEvent(1L, 2L, 3L, "countryName",
                         "leagueName", LocalDateTime.now(), "hometeam", "awayteam",
                         1.5, 2.5, 3.5, "");
-        List<SportEvent> sportEvents = new ArrayList<>(Arrays.asList(sportEvent));
+        List<SportEvent> sportEvents = new ArrayList<>(Collections.singletonList(sportEvent));
 
         SportEventDto sportEventDto =
                 new SportEventDto(1L, 2L, 3L, "countryName",
                         "leagueName", LocalDateTime.now(), "hometeam",
                         "awayteam", 1.5, 2.5, 3.5, "");
-        List<SportEventDto> sportEventDtos = new ArrayList<>(Arrays.asList(sportEventDto));
+        List<SportEventDto> sportEventDtos = new ArrayList<>(Collections.singletonList(sportEventDto));
 
         when(sportEventService.getAvailableSportEvents()).thenReturn(sportEvents);
         when(sportEventMapper.mapToBetDtoList(ArgumentMatchers.anyListOf(SportEvent.class))).thenReturn(sportEventDtos);

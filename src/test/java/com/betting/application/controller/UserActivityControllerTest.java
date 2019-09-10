@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -43,7 +44,7 @@ public class UserActivityControllerTest {
     @Test
     public void getUserActivity() throws Exception {
         UserActivity userActivity = new UserActivity(1L, new User(), "enter dashboard", LocalDateTime.now());
-        List<UserActivity> userActivities = new ArrayList<>(Arrays.asList(userActivity));
+        List<UserActivity> userActivities = new ArrayList<>(Collections.singletonList(userActivity));
 
         UserActivityDto userActivityDto = new UserActivityDto(1L, new User(), "enter dashboard", LocalDateTime.now());
         List<UserActivityDto> userActivityDtos = new ArrayList<>(Arrays.asList(userActivityDto));

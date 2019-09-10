@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -46,8 +47,8 @@ public class NoteControllerTest {
         NoteDto noteDto = new NoteDto(1L, "note content", 1L);
         Note note = new Note(1L, "note content", new User());
 
-        List<NoteDto> noteDtoList = new ArrayList<>(Arrays.asList(noteDto));
-        List<Note> notes = new ArrayList<>(Arrays.asList(note));
+        List<NoteDto> noteDtoList = new ArrayList<>(Collections.singletonList(noteDto));
+        List<Note> notes = new ArrayList<>(Collections.singletonList(note));
 
         when(noteService.getUserNotes(ArgumentMatchers.anyLong())).thenReturn(notes);
         when(noteMapper.mapToDtoList(ArgumentMatchers.anyListOf(Note.class))).thenReturn(noteDtoList);
