@@ -1,7 +1,7 @@
 package com.betting.application.clients;
 
-import com.betting.application.clients.dto.MatchDataResponse;
-import com.betting.application.clients.dto.OddsResponse;
+import com.betting.application.clients.dto.apifootballclient.MatchDataResponse;
+import com.betting.application.clients.dto.apifootballclient.OddsResponse;
 import com.betting.application.config.ApiFootballConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

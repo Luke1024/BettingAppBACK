@@ -1,4 +1,4 @@
-package com.betting.application.clients.dto;
+package com.betting.application.clients.dto.apifootballclient;
 
 public class MatchDataResponse {
     private String match_id;

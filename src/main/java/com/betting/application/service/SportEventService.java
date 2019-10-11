@@ -1,9 +1,9 @@
 package com.betting.application.service;
 
 import com.betting.application.clients.ApiFootballClient;
-import com.betting.application.clients.dto.MatchDataResponse;
-import com.betting.application.clients.dto.MatchOddsDto;
-import com.betting.application.clients.dto.OddsResponse;
+import com.betting.application.clients.dto.apifootballclient.MatchDataResponse;
+import com.betting.application.clients.dto.apifootballclient.MatchOddsDto;
+import com.betting.application.clients.dto.apifootballclient.OddsResponse;
 import com.betting.application.domain.SportEvent;
 import com.betting.application.domain.dto.OddsDto;
 import com.betting.application.repository.SportEventRepository;

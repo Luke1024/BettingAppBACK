@@ -10,10 +10,10 @@ public class ApiFootballConfig {
     @Value("https://apiv2.apifootball.com")
     private String endpoint;
 
-    @Value("/?action=get_events&from=2019-08-25&to=2019-09-26")
+    @Value("/?action=get_events&from=2019-11-11&to=2019-11-16")
     private String events;
 
-    @Value("/?action=get_odds&from=2019-08-26&to=2019-08-30")
+    @Value("/?action=get_odds&from=2019-11-11&to=2019-11-16")
     private String eventOdds;
 
     @Value("&APIkey=f94ab1ef89ff27c4063d7f372343aacb4f1d60bf57fd21d05885828e25be25b8")

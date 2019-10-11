@@ -1,4 +1,4 @@
-package com.betting.application.clients.dto;
+package com.betting.application.clients.dto.apifootballclient;
 
 import com.betting.application.domain.dto.OddsDto;
 

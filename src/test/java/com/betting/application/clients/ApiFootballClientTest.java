@@ -1,7 +1,7 @@
 package com.betting.application.clients;
 
-import com.betting.application.clients.dto.MatchDataResponse;
-import com.betting.application.clients.dto.OddsResponse;
+import com.betting.application.clients.dto.apifootballclient.MatchDataResponse;
+import com.betting.application.clients.dto.apifootballclient.OddsResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class ApiFootballClientTest {
     private ApiFootballClient apiFootballClient;
 
     @Test
-    public void getAvailableBets() {
+    public void getAvailableMatches() {
         OddsResponse[] oddsResponses = apiFootballClient.getAvailableMatches();
         System.out.println(oddsResponses.length);
         OddsResponse response = oddsResponses[0];
